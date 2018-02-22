@@ -1,25 +1,26 @@
-import React, {Component} from 'react'
-class Article extends Component{
+import React, {PureComponent} from 'react'
+
+class Article extends PureComponent{
 	constructor(props){
 		console.log('----','constructor')
 		super(props)
 		this.state={
-			isOpen:props.defaultOpen,
+			//isOpen:props.defaultOpen,
 			counter:0
 		}
 		//this.handleClick=handleClick.bind(this);
 	}
-	shouldComponentUpdate(nextProps,nextState){
+	/*shouldComponentUpdate(nextProps,nextState){
 		console.log('----','shouldComponentUpdate')
 		return (this.state.isOpen !== nextState.isOpen || this.state.counter !== nextState.counter)
 	}
-
+*/
 	componentWillMount(){
 		console.log('----','componentWillMount')
 	}
 
 	
-
+/*
 	componentWillReceiveProps(nextProps){
 		console.log('----','WillReceiveProps')
 		if (nextProps.defaultOpen !== this.props.defaultOpen){
@@ -28,7 +29,7 @@ class Article extends Component{
 			})
 		}
 	}
-
+*/
 	componentWillUpdate(){
 		console.log('----','WillUpdate')
 	}
@@ -38,15 +39,17 @@ class Article extends Component{
 	render(){
 		console.log('----','render');
 		const article=this.props.articl;
-		//console.log(' ',article.text);
-		const body=this.state.isOpen && <section className='card-text'>{article.text}</section>
+		const isOpen=this.props.isOpen;
+		const onButtonClick=this.props.onButtonClick;
+		console.log(' isOpen',isOpen);
+		const body=isOpen && <section className='card-text'>{article.text}</section>
 		return(
 				<div className='card mx-auto' style={{width:'50%'}}>
 					<div className='card-header'>
 						<h2 onClick={this.counterClick}>
 							{article.title} clicked {this.state.counter}
-							<button onClick={this.handleClick} className='btn btn-primary btn-lg float-right'>
-								{this.state.isOpen? 'Close' : 'Open'}
+							<button onClick={onButtonClick} className='btn btn-primary btn-lg float-right'>
+								{isOpen? 'Close' : 'Open'}
 							</button>
 						</h2>
 					</div>
@@ -72,10 +75,11 @@ class Article extends Component{
 
 	handleClick=()=>{
 		console.log(this)
-		this.setState({
+		/*this.setState({
 			isOpen:!this.state.isOpen
-		})
+		})*/
 		console.log(this)
+		
 	}
 
 	counterClick=()=>{
