@@ -33,9 +33,9 @@ componentDidMount() {
 			if(this.state.data===null){
 				return(
 						<div className='container'>
-							<div className='jumbotron'>
-								<h1 className='display-3'>
-									App name								
+							<div className='col-md-12'>
+								<h1>
+									BLOG								
 								</h1>
 							</div>
 							<h3>Загрузка</h3>
@@ -44,19 +44,15 @@ componentDidMount() {
 			}else{
 				return(
 					
-					<div className='container'>
+					<div className='container' >
 						<div className='row'>
 							<div className='col-md-12'>
 								
 							</div>
 						</div>
-						<div className='row'>
-							
-							<div className='col-md-12'>
-								<h1 className='display-3'>
-									App name
-									{/*<button className="btn" onClick={this.reversed}>Реверс</button>*/}
-								</h1>
+						<div className='row'>							
+							<div className='col-md-12' style={{ height:'10%', background :'#acac90',}}>
+								<h4 style={{marginTop : '20px', marginLeft  : '100px'}}>BLOG</h4>
 							</div>
 							
 						</div>

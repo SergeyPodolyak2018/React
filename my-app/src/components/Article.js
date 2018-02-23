@@ -56,12 +56,12 @@ class Article extends PureComponent{
 		const authorName=<section className='card-text'>{article.authorName}</section>
 
 		const buttonOpenComent=isOpen && article.comments.length>0 && <section className='card-text'>
-											<button onClick={this.openComments} className='btn btn-primary btn-lg float-right'>
-												{this.state.openComentArticleId? 'Close' : 'Open'}
+											<button onClick={this.openComments} className='btn btn-link float-right'>
+												{this.state.openComentArticleId? 'close coments' : 'open coments'}
 											</button>
 										</section>
 
-		const coments=this.state.openComentArticleId && <section className='card-text'>						
+		const coments=isOpen && this.state.openComentArticleId && <section className='card-text'>						
 															<Comments comments={article.comments}/>
 														</section>
 
@@ -70,35 +70,75 @@ class Article extends PureComponent{
 				<div className='row' >
 					<div className='col-md-12'>
 						<div className='row' >
-							<div className='col-md-12'>
-								<h2 onClick={this.counterClick}>
-									{article.title} 
-									<button onClick={onButtonClick} className='btn btn-primary btn-lg float-right'>
-										{isOpen? 'Close' : 'Open'}
-									</button>
-								</h2>
+							<div className='col-md-6'>
+								<h2>Picture</h2>
 							</div>
-						</div>	
-					
-						<div className='row'>
-							<div className='col-md-12'>
-								<h5 className='card-subtitle text-muted'>
-									{<p>Author: {article.authorName}</p>}
-									
-									{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
-								</h5>
-								<h6 className='card-subtitle text-muted'>
-									{<p>creation date: {article.created}</p>}
-
-									{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
-								</h6>
+							<div className='col-md-6'>
 								{body}
-								{buttonOpenComent}						
-								{coments}
 							</div>
+						</div>
+						<div className='row' >
+							<div className='col-md-6'>
+								<h6 className='card-subtitle text-muted'>
+									{<p>creation date: {article.created}</p>}									
+								</h6>
+							</div>
+							<div className='col-md-6'>
+								<button onClick={onButtonClick} className='btn btn-link float-right'>
+									{isOpen? 'back to aticles' : 'continue riding'}
+								</button>
+							</div>
+						</div>
+						<div className='row' >
+							<div className='col-md-6'>
+								<h6 className='card-subtitle text-muted'>
+																	
+								</h6>
+							</div>
+							<div className='col-md-6'>
+								{buttonOpenComent}
+							</div>
+						</div>
+						<div className='row' >
+							<div className='col-md-12'>
+								{coments}
+							</div>						
 						</div>
 					</div>
 				</div>
+
+				// <div className='row' >
+				// 	<div className='col-md-12'>
+				// 		<div className='row' >
+				// 			<div className='col-md-12'>
+				// 				<h2 onClick={this.counterClick}>
+				// 					{article.title} 
+				// 					<button onClick={onButtonClick} className='btn btn-link float-right'>
+				// 						{isOpen? 'Close' : 'Open'}
+				// 					</button>
+				// 				</h2>
+				// 			</div>
+				// 		</div>	
+					
+				// 		<div className='row'>
+				// 			<div className='col-md-12'>
+				// 				<h5 className='card-subtitle text-muted'>
+				// 					{<p>Author: {article.authorName}</p>}
+									
+				// 					{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
+				// 				</h5>
+				// 				<h6 className='card-subtitle text-muted'>
+				// 					{<p>creation date: {article.created}</p>}
+
+				// 					{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
+				// 				</h6>
+				// 				{body}
+				// 				{buttonOpenComent}						
+				// 				{coments}
+				// 			</div>
+				// 		</div>
+				// 	</div>
+				// </div>
 			)
 	}
 
@@ -132,7 +172,8 @@ class Article extends PureComponent{
 	openComments=()=>{
 		console.log('openComments')
 		this.setState({
-			openComentArticleId: !this.state.openComentArticleId
+			openComentArticleId: this.props.isOpen && !this.state.openComentArticleId,
+
 		})
 		
 	}

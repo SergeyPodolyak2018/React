@@ -17,7 +17,7 @@ export default class ArticleList extends PureComponent{
 			const articleElements=this.props.articles.map((article,index)=>
 				{if(this.state.openArticleId===null){
 					return(
-							<div key={article._id} className='row'>
+							<div key={article._id} className='col-md-12'>
 								<Article articl={article} 
 									isOpen={this.state.openArticleId===article._id}
 									onButtonClick={this.handleClick.bind(this,article._id)}							
@@ -27,7 +27,7 @@ export default class ArticleList extends PureComponent{
 					}else{
 						if(this.state.openArticleId===article._id){
 							return(
-								<div key={article._id} className='row'>
+								<div key={article._id} className='col-md-12'>
 									<Article articl={article} 
 										isOpen={this.state.openArticleId===article._id}
 										onButtonClick={this.handleClick.bind(this,article._id)}							
