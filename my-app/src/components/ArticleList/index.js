@@ -7,25 +7,42 @@ import './style.css'
 export default class ArticleList extends PureComponent{
 	state={
 		openArticleId:null
+		
+
 	}
 
 	render(){
 			console.log('class ArticleList--render',2)
 
 			const articleElements=this.props.articles.map((article,index)=>
-
-				<li key={article.id} className='article-list__li'>
-					<Article articl={article} 
-						isOpen={this.state.openArticleId===article.id}
-						onButtonClick={this.handleClick.bind(this,article.id)}
-						
-						/>
-				</li>
+				{if(this.state.openArticleId===null){
+					return(
+							<div key={article._id} className='row'>
+								<Article articl={article} 
+									isOpen={this.state.openArticleId===article._id}
+									onButtonClick={this.handleClick.bind(this,article._id)}							
+									/>
+							</div>
+						)
+					}else{
+						if(this.state.openArticleId===article._id){
+							return(
+								<div key={article._id} className='row'>
+									<Article articl={article} 
+										isOpen={this.state.openArticleId===article._id}
+										onButtonClick={this.handleClick.bind(this,article._id)}							
+									/>
+								</div>
+							)
+						}
+					}
+				}
 			)
 		return(
-				<ul>				
+
+				<div className='row'>				
 					{articleElements}
-				</ul>
+				</div>
 			)
 		}
 		handleClick=(openArticleId)=>{

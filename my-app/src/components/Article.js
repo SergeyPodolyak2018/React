@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import Comments from './Comments'
 
 class Article extends PureComponent{
 	constructor(props){
@@ -6,7 +7,9 @@ class Article extends PureComponent{
 		super(props)
 		this.state={
 			//isOpen:props.defaultOpen,
-			counter:0
+			counter:0,
+			openComentArticleId:false
+
 		}
 		//this.handleClick=handleClick.bind(this);
 	}
@@ -38,26 +41,62 @@ class Article extends PureComponent{
 
 	render(){
 		console.log('----','render');
+
 		const article=this.props.articl;
+
 		const isOpen=this.props.isOpen;
+
 		const onButtonClick=this.props.onButtonClick;
+
 		console.log(' isOpen',isOpen);
-		const body=isOpen && <section className='card-text'>{article.text}</section>
+
+		
+		const body=<section className='card-text'>{this.htmlIntegrator(article.body)}</section>
+
+		const authorName=<section className='card-text'>{article.authorName}</section>
+
+		const buttonOpenComent=isOpen && article.comments.length>0 && <section className='card-text'>
+											<button onClick={this.openComments} className='btn btn-primary btn-lg float-right'>
+												{this.state.openComentArticleId? 'Close' : 'Open'}
+											</button>
+										</section>
+
+		const coments=this.state.openComentArticleId && <section className='card-text'>						
+															<Comments comments={article.comments}/>
+														</section>
+
+		
 		return(
-				<div className='card mx-auto' style={{width:'50%'}}>
-					<div className='card-header'>
-						<h2 onClick={this.counterClick}>
-							{article.title} clicked {this.state.counter}
-							<button onClick={onButtonClick} className='btn btn-primary btn-lg float-right'>
-								{isOpen? 'Close' : 'Open'}
-							</button>
-						</h2>
-					</div>
-					<div className='card-body'>
-						<h6 className='card-subtitle text-muted'>
-							creation date: {(new Date(article.date)).toDateString()}
-						</h6>
-						{body}
+				<div className='row' >
+					<div className='col-md-12'>
+						<div className='row' >
+							<div className='col-md-12'>
+								<h2 onClick={this.counterClick}>
+									{article.title} 
+									<button onClick={onButtonClick} className='btn btn-primary btn-lg float-right'>
+										{isOpen? 'Close' : 'Open'}
+									</button>
+								</h2>
+							</div>
+						</div>	
+					
+						<div className='row'>
+							<div className='col-md-12'>
+								<h5 className='card-subtitle text-muted'>
+									{<p>Author: {article.authorName}</p>}
+									
+									{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
+								</h5>
+								<h6 className='card-subtitle text-muted'>
+									{<p>creation date: {article.created}</p>}
+
+									{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
+								</h6>
+								{body}
+								{buttonOpenComent}						
+								{coments}
+							</div>
+						</div>
 					</div>
 				</div>
 			)
@@ -83,12 +122,29 @@ class Article extends PureComponent{
 	}
 
 	counterClick=()=>{
-		console.log(this)
+		console.log('counterClick')
 		this.setState({
 			counter: this.state.counter+1
 		})
-		console.log(this)
+		
 	}
+
+	openComments=()=>{
+		console.log('openComments')
+		this.setState({
+			openComentArticleId: !this.state.openComentArticleId
+		})
+		
+	}
+
+	htmlIntegrator(text){
+		return (
+	      <div dangerouslySetInnerHTML={{ __html: text }} />
+	    );
+	}
+
+
+
 }
 
 
