@@ -1,27 +1,38 @@
 import React, {PureComponent} from 'react'
 import Comments from './Comments'
-//import Image from './img/Hotair.jpg'
-import Image from './img/Satana.jpg'
 
 class Article extends PureComponent{
 	constructor(props){
 		console.log('----','constructor')
 		super(props)
 		this.state={
-			
+			//isOpen:props.defaultOpen,
 			counter:0,
 			openComentArticleId:false
 
 		}
-		
+		//this.handleClick=handleClick.bind(this);
 	}
-	
+	/*shouldComponentUpdate(nextProps,nextState){
+		console.log('----','shouldComponentUpdate')
+		return (this.state.isOpen !== nextState.isOpen || this.state.counter !== nextState.counter)
+	}
+*/
 	componentWillMount(){
 		console.log('----','componentWillMount')
 	}
 
 	
-
+/*
+	componentWillReceiveProps(nextProps){
+		console.log('----','WillReceiveProps')
+		if (nextProps.defaultOpen !== this.props.defaultOpen){
+			this.setState({
+				isOpen:nextProps.defaultOpen
+			})
+		}
+	}
+*/
 	componentWillUpdate(){
 		console.log('----','WillUpdate')
 	}
@@ -33,17 +44,16 @@ class Article extends PureComponent{
 
 		const article=this.props.articl;
 
-
 		const isOpen=this.props.isOpen;
 
 		const onButtonClick=this.props.onButtonClick;
 
 		console.log(' isOpen',isOpen);
 
-		const title = <h4><section className='card-text'>{article.title}</section></h4>
+		
 		const body=<section className='card-text'>{this.htmlIntegrator(article.body)}</section>
 
-		/*const authorName=<section className='card-text'>{article.authorName}</section>
+		const authorName=<section className='card-text'>{article.authorName}</section>
 
 		const buttonOpenComent=isOpen && article.comments.length>0 && <section className='card-text'>
 											<button onClick={this.openComments} className='btn btn-link float-right'>
@@ -54,43 +64,22 @@ class Article extends PureComponent{
 		const coments=isOpen && this.state.openComentArticleId && <section className='card-text'>						
 															<Comments comments={article.comments}/>
 														</section>
-*/
+
 		
 		return(
 				<div className='row' >
 					<div className='col-md-12'>
-						<div className='row' style = {{"borderBottom": "solid #acac90", "borderWidth": "0px 0px 1px 0px" }}>
-							<div className='col-md-4' style = {{"paddingLeft": "0"}}>
-								<img src={Image} className='img-fluid'/>
+						<div className='row' >
+							<div className='col-md-6'>
+								<h2>Picture</h2>
 							</div>
-							<div className='col-md-8 ' tyle = {{"paddingLeft": "0"}}>
-								<div className='row' >
-									<div className='col-md-12'>
-										{title}
-									</div>
-								</div>
-								<div className='row' >
-									<div className='col-md-12'>
-										{body}
-									</div>
-								</div>
-								<div className='row' >
-									<div className='col-md-12'>
-										
-									</div>
-								</div>
-								<div className='col align-self-bottom' >
-									<div className=' mt-auto p-2 ' tyle = {{"paddingRight": "0"}}>										
-											<button onClick={onButtonClick} className='btn btn-link'>
-												continue riding
-											</button>
-									</div>										
-								</div>										
+							<div className='col-md-6'>
+								{body}
 							</div>
 						</div>
-						{/*<div className='row' >
+						<div className='row' >
 							<div className='col-md-6'>
-								<h6 className='card-text'>
+								<h6 className='card-subtitle text-muted'>
 									{<p>creation date: {article.created}</p>}									
 								</h6>
 							</div>
@@ -100,8 +89,8 @@ class Article extends PureComponent{
 								</button>
 								
 							</div>
-						</div>*/}
-						{/*<div className='row' >
+						</div>
+						<div className='row' >
 							<div className='col-md-6'>
 								<h6 className='card-subtitle text-muted'>
 																	
@@ -110,16 +99,47 @@ class Article extends PureComponent{
 							<div className='col-md-6'>
 								{buttonOpenComent}
 							</div>
-						</div>*/}
-						{/*<div className='row' >
+						</div>
+						<div className='row' >
 							<div className='col-md-12'>
 								{coments}
 							</div>						
-						</div>*/}
+						</div>
 					</div>
 				</div>
 
-				
+				// <div className='row' >
+				// 	<div className='col-md-12'>
+				// 		<div className='row' >
+				// 			<div className='col-md-12'>
+				// 				<h2 onClick={this.counterClick}>
+				// 					{article.title} 
+				// 					<button onClick={onButtonClick} className='btn btn-link float-right'>
+				// 						{isOpen? 'Close' : 'Open'}
+				// 					</button>
+				// 				</h2>
+				// 			</div>
+				// 		</div>	
+					
+				// 		<div className='row'>
+				// 			<div className='col-md-12'>
+				// 				<h5 className='card-subtitle text-muted'>
+				// 					{<p>Author: {article.authorName}</p>}
+									
+				// 					{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
+				// 				</h5>
+				// 				<h6 className='card-subtitle text-muted'>
+				// 					{<p>creation date: {article.created}</p>}
+
+				// 					{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
+				// 				</h6>
+				// 				{body}
+				// 				{buttonOpenComent}						
+				// 				{coments}
+				// 			</div>
+				// 		</div>
+				// 	</div>
+				// </div>
 			)
 	}
 
@@ -160,7 +180,6 @@ class Article extends PureComponent{
 	}
 
 	htmlIntegrator(text){
-
 		return (
 	      <div dangerouslySetInnerHTML={{ __html: text }} />
 	    );
