@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-//import Comments from './Comments'
+import Comments from './Comments'
 import Image from './img/Hotair.jpg'
 import DataParser from './DataParser'
 //import Image from './img/Satana.jpg'
@@ -52,9 +52,9 @@ class Article extends PureComponent{
 											</button>
 										</section>
 
-		/*const coments=isOpen && this.state.openComentArticleId && <section className='card-text'>						
+		const coments=isOpen && this.state.openComentArticleId && <section className='card-text'>						
 															<Comments comments={article.comments}/>
-														</section>*/
+														</section>
 
 		
 		return(
@@ -120,12 +120,12 @@ class Article extends PureComponent{
 								{buttonOpenComent}
 							</div>
 						</div>
-						{/*<div className='row' >
+						<div className='row' >
 							<div className='col-md-12'>
 								{coments}
 							</div>
 						</div>	
-							*/}
+							
 
 
 					</div>

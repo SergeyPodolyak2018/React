@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Comments from './Comments'
 
 
@@ -10,7 +10,7 @@ const Comment = (props) => {
 	 comentsReply=props.comment.replies.length>0 && <section className='card-text'>						
 						<Comments comments={props.comment.replies}/>
 					</section>
-		
+
 	}
 				
 
@@ -40,11 +40,11 @@ const Comment = (props) => {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }
 
 
 
 
 
-export default Comment;
+export default Comment

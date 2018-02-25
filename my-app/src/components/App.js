@@ -47,8 +47,8 @@ componentDidMount() {
 			}else{				
 				
 						if(this.state.oneArticle!==null){
-							console.log("class App -- render",2)
-							console.log(this.state.oneArticle)
+							console.log("class App -- render",2);
+							console.log(this.state.oneArticle);
 							content=<div className='container'>
 										<div className='row'>
 												<div className='col-md-12'>

@@ -40,7 +40,7 @@ class Comments extends PureComponent{
 				
 					return(
 							<div key={comment._id} className='col-md-12 top-buffer' >							
-								<Comment comment={comment}/>
+								<Comment comment={comment} />
 							</div>
 						)
 					}
@@ -53,8 +53,8 @@ class Comments extends PureComponent{
 		return(
 				<div className='row'>	
 					{comentBody}
-				<div className='row'>	
-			)
+				</div >	
+			);
 	}
 
 

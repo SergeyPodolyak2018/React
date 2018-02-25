@@ -3,16 +3,16 @@ import React from 'react';
 
 
 const DataParser = (props) => {
-	console.log(props.data);
-	const dataArrey=props.data.split(" ")[0].split("/");
-	let day=parseInt(dataArrey[0], 10);
-	let month=parseInt(dataArrey[1], 10);
-	let year=parseInt(dataArrey[2], 10);
-	let date = new Date(year, month, day); // 3 января 2014
-    let dayString=date.toLocaleString('en', {weekday: 'long'});
-    let monthString=date.toLocaleString('en', {month: 'long'});
-	console.log(dayString);		
-	console.log(monthString);	
+	console.log(props.data)
+	const dataArrey=props.data.split(" ")[0].split("/")
+	let day=parseInt(dataArrey[0], 10)
+	let month=parseInt(dataArrey[1], 10)
+	let year=parseInt(dataArrey[2], 10)
+	let date = new Date(year, month, day) // 3 января 2014
+    let dayString=date.toLocaleString('en', {weekday: 'long'})
+    let monthString=date.toLocaleString('en', {month: 'long'})
+	console.log(dayString)		
+	console.log(monthString)	
 
   return(
 		
