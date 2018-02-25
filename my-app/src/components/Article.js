@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import Comments from './Comments'
 //import Image from './img/Hotair.jpg'
 import Image from './img/Satana.jpg'
+import DataParser from './DataParser'
 
 
 class Article extends PureComponent{
@@ -62,6 +63,9 @@ class Article extends PureComponent{
 					<div className='col-md-12'>
 						<div className='row' style = {{"borderBottom": "solid #acac90", "borderWidth": "0px 0px 1px 0px" }}>
 							<div className='col-md-4' style = {{"paddingLeft": "0"}}>
+								<div  style =  {{"width":  "15%",   "height":  "60%",  "display":  "block",'position':'absolute',"fontSize": "60%"}}>
+									<DataParser data={article.created}/>
+								</div>
 								<img src={Image} className='img-fluid'/>
 							</div>
 							<div className='col-md-8 ' tyle = {{"paddingLeft": "0"}}>

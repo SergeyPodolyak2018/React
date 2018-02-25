@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import Comments from './Comments'
 import Image from './img/Hotair.jpg'
 import DataParser from './DataParser'
+import Form from './FormForeComment'
 //import Image from './img/Satana.jpg'
 
 class Article extends PureComponent{
@@ -62,7 +63,7 @@ class Article extends PureComponent{
 					<div className='col-md-12'>
 						<div className='row'>
 							<div className='col-md-12'>
-								<div  style =  {{"width":  "10%",   "height":  "40%",  "display":  "block",'position':'absolute'}}>
+								<div  style =  {{"width":  "8%",   "height":  "40%",  "display":  "block",'position':'absolute'}}>
 									<DataParser data={article.created}/>
 								</div>
 								<img src={Image} className='img-fluid' />
@@ -86,33 +87,7 @@ class Article extends PureComponent{
 							</div>
 						</div>
 						<div className='row' >
-							<div className='col-md-12'>
-								<div className='row form-group' >
-									<div className='col-md-8'>
-										<div className="input-group">										  
-										  <input type="text" className="form-control" placeholder="Name" aria-describedby="basic-addon1"/>
-										</div>
-									</div>
-									<div className='col-md-4'>
-										<div className="input-group">										  
-										  <input type="text" className="form-control" placeholder="e-mail" aria-describedby="basic-addon1"/>
-										</div>
-									</div>
-								</div>
-								<div className='row form-group' >
-									<div className='col-md-12'>
-										<textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
-									</div>									
-								</div>
-								<div className='row form-group' >
-								
-									<div className='col-md-7 mx-auto'>
-										<button  className='btn btn-secondary btn-lg btn-block'>
-											Submit Comment
-										</button>
-									</div>									
-								</div>
-							</div>
+							<Form />							
 						</div>
 
 						<div className='row' >
