@@ -3,6 +3,7 @@ import Comments from './Comments'
 //import Image from './img/Hotair.jpg'
 import Image from './img/Satana.jpg'
 
+
 class Article extends PureComponent{
 	constructor(props){
 		console.log('----','constructor')

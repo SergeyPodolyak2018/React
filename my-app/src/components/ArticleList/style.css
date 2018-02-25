@@ -3,3 +3,14 @@
 }
 
 .top-buffer { margin-top:20px; }
+
+/* .date-rotate {
+    transform: rotateX(90deg); 
+   } */
+   p.date-rotate{
+   -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(90deg);
+}

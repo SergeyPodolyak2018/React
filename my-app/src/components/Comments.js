@@ -39,9 +39,9 @@ class Comments extends PureComponent{
 		const comentBody=this.props.comments.map((comment,index)=>{
 				
 					return(
-							<li key={comment._id} className='article-list__li'>
+							<div key={comment._id} className='col-md-12 top-buffer' >							
 								<Comment comment={comment}/>
-							</li>
+							</div>
 						)
 					}
 				
@@ -51,23 +51,17 @@ class Comments extends PureComponent{
 		
 		
 		return(
-				<div className='card mx-auto' style={{width:'100%'}}>
-					<ul>
-						{comentBody}
-					</ul>
-				</div>
+				<div className='row'>	
+					{comentBody}
+				<div className='row'>	
 			)
 	}
 
 
 
 
-	componentDidUpdate(){
-		console.log('Comments----','DidUpdate')
-	}
-	componentDidMount(){
-		console.log('Comments----','mountingFinished')
-	}
+	
+	
 
 }
 

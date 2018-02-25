@@ -1,5 +1,8 @@
 import React, {PureComponent} from 'react'
-import Comments from './Comments'
+//import Comments from './Comments'
+import Image from './img/Hotair.jpg'
+import DataParser from './DataParser'
+//import Image from './img/Satana.jpg'
 
 class Article extends PureComponent{
 	constructor(props){
@@ -11,28 +14,15 @@ class Article extends PureComponent{
 			openComentArticleId:false
 
 		}
-		//this.handleClick=handleClick.bind(this);
+		
 	}
-	/*shouldComponentUpdate(nextProps,nextState){
-		console.log('----','shouldComponentUpdate')
-		return (this.state.isOpen !== nextState.isOpen || this.state.counter !== nextState.counter)
-	}
-*/
+	
 	componentWillMount(){
 		console.log('----','componentWillMount')
 	}
 
 	
-/*
-	componentWillReceiveProps(nextProps){
-		console.log('----','WillReceiveProps')
-		if (nextProps.defaultOpen !== this.props.defaultOpen){
-			this.setState({
-				isOpen:nextProps.defaultOpen
-			})
-		}
-	}
-*/
+
 	componentWillUpdate(){
 		console.log('----','WillUpdate')
 	}
@@ -44,16 +34,17 @@ class Article extends PureComponent{
 
 		const article=this.props.articl;
 
+
 		const isOpen=this.props.isOpen;
 
 		const onButtonClick=this.props.onButtonClick;
 
 		console.log(' isOpen',isOpen);
 
-		
+		const title = <h4><section className='card-text'>{article.title}</section></h4>
 		const body=<section className='card-text'>{this.htmlIntegrator(article.body)}</section>
 
-		const authorName=<section className='card-text'>{article.authorName}</section>
+		/*const authorName=<section className='card-text'>{article.authorName}</section>*/
 
 		const buttonOpenComent=isOpen && article.comments.length>0 && <section className='card-text'>
 											<button onClick={this.openComments} className='btn btn-link float-right'>
@@ -61,88 +52,90 @@ class Article extends PureComponent{
 											</button>
 										</section>
 
-		const coments=isOpen && this.state.openComentArticleId && <section className='card-text'>						
+		/*const coments=isOpen && this.state.openComentArticleId && <section className='card-text'>						
 															<Comments comments={article.comments}/>
-														</section>
+														</section>*/
 
 		
 		return(
-				<div className='row' >
+				<div className='row top-buffer' >
 					<div className='col-md-12'>
+						<div className='row'>
+							<div className='col-md-12'>
+								<div  style =  {{"width":  "10%",   "height":  "40%",  "display":  "block",'position':'absolute'}}>
+									<DataParser data={article.created}/>
+								</div>
+								<img src={Image} className='img-fluid' />
+							</div>
+						</div>
+
 						<div className='row' >
 							<div className='col-md-6'>
-								<h2>Picture</h2>
+								{title}
 							</div>
-							<div className='col-md-6'>
+							<div className=' mt-auto p-2 ' style = {{"paddingRight": "0"}}>										
+								<button onClick={onButtonClick} className='btn btn-link'>
+									back to articles
+								</button>
+							</div>	
+						</div>
+
+						<div className='row' >
+							<div className='col-md-12'>
 								{body}
 							</div>
 						</div>
 						<div className='row' >
-							<div className='col-md-6'>
-								<h6 className='card-subtitle text-muted'>
-									{<p>creation date: {article.created}</p>}									
-								</h6>
-							</div>
-							<div className='col-md-6'>
-								<button onClick={onButtonClick} className='btn btn-link float-right'>
-									{isOpen? 'back to aticles' : 'continue riding'}
-								</button>
+							<div className='col-md-12'>
+								<div className='row form-group' >
+									<div className='col-md-8'>
+										<div className="input-group">										  
+										  <input type="text" className="form-control" placeholder="Name" aria-describedby="basic-addon1"/>
+										</div>
+									</div>
+									<div className='col-md-4'>
+										<div className="input-group">										  
+										  <input type="text" className="form-control" placeholder="e-mail" aria-describedby="basic-addon1"/>
+										</div>
+									</div>
+								</div>
+								<div className='row form-group' >
+									<div className='col-md-12'>
+										<textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
+									</div>									
+								</div>
+								<div className='row form-group' >
 								
+									<div className='col-md-7 mx-auto'>
+										<button  className='btn btn-secondary btn-lg btn-block'>
+											Submit Comment
+										</button>
+									</div>									
+								</div>
 							</div>
 						</div>
+
 						<div className='row' >
-							<div className='col-md-6'>
-								<h6 className='card-subtitle text-muted'>
-																	
-								</h6>
-							</div>
-							<div className='col-md-6'>
+							<div className='col-md-12'>
 								{buttonOpenComent}
 							</div>
 						</div>
-						<div className='row' >
+						{/*<div className='row' >
 							<div className='col-md-12'>
 								{coments}
-							</div>						
-						</div>
+							</div>
+						</div>	
+							*/}
+
+
 					</div>
+						
 				</div>
+				
 
-				// <div className='row' >
-				// 	<div className='col-md-12'>
-				// 		<div className='row' >
-				// 			<div className='col-md-12'>
-				// 				<h2 onClick={this.counterClick}>
-				// 					{article.title} 
-				// 					<button onClick={onButtonClick} className='btn btn-link float-right'>
-				// 						{isOpen? 'Close' : 'Open'}
-				// 					</button>
-				// 				</h2>
-				// 			</div>
-				// 		</div>	
-					
-				// 		<div className='row'>
-				// 			<div className='col-md-12'>
-				// 				<h5 className='card-subtitle text-muted'>
-				// 					{<p>Author: {article.authorName}</p>}
-									
-				// 					{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
-				// 				</h5>
-				// 				<h6 className='card-subtitle text-muted'>
-				// 					{<p>creation date: {article.created}</p>}
-
-				// 					{/*<p>creation date: {(new Date(article.date)).toDateString()}</p>*/}
-				// 				</h6>
-				// 				{body}
-				// 				{buttonOpenComent}						
-				// 				{coments}
-				// 			</div>
-				// 		</div>
-				// 	</div>
-				// </div>
+				
 			)
 	}
-
 
 
 

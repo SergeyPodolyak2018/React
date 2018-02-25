@@ -97,7 +97,7 @@ componentDidMount() {
 													
 												</div>
 												<div className='col-md-9'>
-													<ArticleList  articles={this.state.reverted? this.state.data.articles.slice().reverse() : this.state.data.articles} openArticle={this.getDataFromAPI}/>
+													<ArticleList  articles={this.state.data.articles.slice()} openArticle={this.getDataFromAPI}/>
 												</div>
 												<div className='col-md-2'>
 													
