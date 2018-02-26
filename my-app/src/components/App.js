@@ -68,7 +68,7 @@ componentDidMount() {
 													<div className='col-md-8'>
 														<OneBigArticle oneArticle={this.state.oneArticle} articl={this.state.oneArticle} isOpen={true}					
 																			onButtonClick={this.getToAllArticle.bind(this)}
-																								
+																			refresh={this.getDataFromAPI}					
 																			/>
 													</div>
 													<div className='col-md-2'>

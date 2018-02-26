@@ -3,6 +3,7 @@ import Comments from './Comments'
 //import Image from './img/Hotair.jpg'
 import Image from './img/Satana.jpg'
 import DataParser from './DataParser'
+import TextRedactor from './TextCutter'
 
 
 class Article extends PureComponent{
@@ -43,7 +44,12 @@ class Article extends PureComponent{
 		console.log(' isOpen',isOpen);
 
 		const title = <h4><section className='card-text'>{article.title}</section></h4>
-		const body=<section className='card-text'>{this.htmlIntegrator(article.body)}</section>
+		
+		
+		
+		//const body=<section className='card-text'>{this.htmlIntegrator(article.body)}</section>
+		const body=<section className='card-text'>{TextRedactor(article.body)}</section>
+
 
 		/*const authorName=<section className='card-text'>{article.authorName}</section>
 
