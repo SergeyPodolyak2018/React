@@ -4,32 +4,17 @@ import React, {PureComponent} from 'react'
 
 class Form extends PureComponent{
 	constructor(props){
-		console.log('----','constructor')
 		super(props)
 		this.state={		
 			articleId:props.articl._id,			
 			text:'',
 			author:'',
 			authorName:''
-
-		}
-		
+		}		
 	}
 	
-	componentWillMount(){
-		console.log('----','componentWillMount')
-	}
-
 	
-
-	componentWillUpdate(){
-		console.log('----','WillUpdate')
-	}
-
-	
-
-	render(){
-		
+	render(){	
 		
 		return(
 				<div className='col-md-12'>
@@ -83,11 +68,7 @@ class Form extends PureComponent{
 		tempJson.author = crypto.createHash('md5').update(this.state.author).digest('hex');		
 		let sendData=JSON.stringify(tempJson)
 
-	//Добавить коментарий	
-		/*let huy=JSON.stringify({ articleId: '59ca071425e591001fc56480',
-								 text: '>:-)',
-								 author: '55f6c168b8229d2744d7172b',
-								 authorName: 'SP' })*/
+
 
 //Добавить статью
 		/*let huy1=JSON.stringify({ 
@@ -98,45 +79,25 @@ class Form extends PureComponent{
 								 metaKeywords: 'keywords',
 								 body: '<p>text text121121212121221212121 text<br /></p>',
 								})
-
-		let huy2=JSON.stringify({ 
-								 body: '<p>Change this dsfvdsfvdsfvdsfvd dfvasasasasvvvvvvvvvvvvvv vvvvvvvvvvvvvvvvv  vvvvvvvvvvvv<br /></p>',
-								})*/
-		console.log(sendData)
-
-
-		let url='http://api.blog.testing.singree.com/comment/'  //добавить коментарий
-		let url1='http://api.blog.testing.singree.com/' //добавить статью
-		let url2='http://api.blog.testing.singree.com/5a93c994730bca001d0ad852' //Изменить тело вместо POST вставить PUT
-
-
-		console.log('sendForm')
-
+*/
+//let url1='http://api.blog.testing.singree.com/' //добавить статью
+		
+				
+		let url='http://api.blog.testing.singree.com/comment/'  //добавить коментарий		
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", url, true)
 		xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
 		xhr.onreadystatechange =function () {
-        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-		            console.log(xhr.responseText);
-		            this.props.refreshFunc();//обновить родителя
-		            this.setState({text:''});//сбросить текст коментария
-		        };
+	        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {			            
+			            this.props.refreshFunc();//обновить родителя
+			            this.setState({text:''});//сбросить текст коментария
+			};
 		    }.bind(this);		
 		xhr.send(sendData);		
 	}
 
 
-	componentDidUpdate(){
-		console.log('----','DidUpdate')
-	}
-	componentDidMount(){
-		console.log('----','mountingFinished')
-	}
-
 	
-
-
 }
 
 
