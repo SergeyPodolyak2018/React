@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react'
 import DataParser from './DataParser'
 import TextRedactor from './TextCutter'
-//import Image from './img/Hotair.jpg'
-import Image from './img/Satana.jpg'
+import Image from './img/Hotair.jpg'
+//import Image from './img/Satana.jpg'
 
 class Article extends PureComponent{
 	
@@ -38,16 +38,13 @@ class Article extends PureComponent{
 								</div>
 								<div className='row' >
 									<div className='col-md-12'>
-										
-									</div>
-								</div>
-								<div className='col align-self-bottom' >
-									<div className=' mt-auto p-2 colPadMinRight'>										
+										<div className='colPadMinRight'>										
 											<button onClick={onButtonClick} className='btn btn-link'>
 												continue riding
 											</button>
-									</div>										
-								</div>										
+										</div>
+									</div>
+								</div>																		
 							</div>
 						</div>						
 					</div>

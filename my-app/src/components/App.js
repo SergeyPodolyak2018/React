@@ -94,12 +94,13 @@ componentDidMount() {
 													
 												</div>
 											</div>
-
-											<div className='row'>
+											
+											<div className='row top-buffer'>
 												<div className='col-md-12'>
 													<PageList length={this.state.data.articles.length} changePage={this.changePage}/>
 												</div>												
 											</div>
+											
 											
 										</div>
 										
@@ -112,8 +113,7 @@ componentDidMount() {
 	
 
 
-		changePage=(pageNumber)=>{
-			console.log('jhbjhgj');
+		changePage=(pageNumber)=>{			
 			this.setState({
 				page:pageNumber
 			})
@@ -128,7 +128,7 @@ componentDidMount() {
 
 
 		getDataFromAPI=(whotYouNeed)=>{
-			let qwery='?limit=15'
+			let qwery='?limit=20'
 			
 			if(whotYouNeed!==undefined){
 				qwery=whotYouNeed;

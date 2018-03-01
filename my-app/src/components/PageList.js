@@ -12,20 +12,24 @@ export default class PageList extends PureComponent{
 	var temp=0;
 	for (let i = 1; i !== howManyPages+lastArticles; i++) {
 	    
-	    rows.push(<li key={i+1}><button onClick={onButtonClick.bind(this,temp)} className='btn btn-link'>
+	    rows.push(<li key={i+1} className='page-item'><a className='page-link' href="#" onClick={onButtonClick.bind(this,temp)} >
 												{i}
-											</button></li>);
+											</a></li>);
 	    temp=temp+3;
 	}
 
 
 
   return(		
-	  	<div>
-	  		<ul className='calendar_day_list'>
+	  	
+	  	<nav aria-label="Page navigation example" >
+	  		<ul className='pagination calendar_day_list'>
+	  			<li className='page-item'><a className='page-link' href="#">&laquo;</a></li>
 	  			{rows}
+	  			<li className='page-item'><a className='page-link' href="#">&raquo;</a></li>
 	  		</ul>
-	  	</div>
+	  	</nav>
+	  
 
   		
 	)

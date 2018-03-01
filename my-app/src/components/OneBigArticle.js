@@ -27,7 +27,7 @@ class Article extends PureComponent{
 
 		const redactor=redactOpen &&<div className='col-md-12'>
 										<textarea className="form-control" rows="3" value={this.state.bodyOfarticle} onChange={this.textChange}></textarea>
-										<button  className='btn' onClick={this.sendForm}>
+										<button  className='btn redactorSaveButton' onClick={this.sendForm}>
 												save
 										</button>
 									</div>		
